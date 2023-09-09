@@ -43,7 +43,7 @@ def get_processed_df(path, cols, category):
     df = df.drop_duplicates(subset="description", keep='first')
 
     df["primary_genre"] = get_primary_gen(df)
-    df["type"] = category
+    df["category"] = category
     return df
 
 
