@@ -1,5 +1,6 @@
-jupyter==1.0.0
-ipython==8.15.0
-tqdm==4.66.1
-pandas==2.1.0
-matplotlib==3.7.2
+ipython
+jupyter
+matplotlib
+pandas
+tqdm
+langdetect
