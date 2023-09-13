@@ -91,7 +91,10 @@ def get_df_info(df):
     display(df.dtypes)
     print("Null Values:")
     display(df.isna().sum())
-    print("Duplicate Movie Name Count: ", df["title"].duplicated().sum())
+    try:
+        print("Duplicate Movie Name Count: ", df["title"].duplicated().sum())
+    except Exception:
+        pass
     print("Duplicate Description Count: ", df["description"].duplicated().sum())
     print("DataFrame Details:")
     display(df.describe(include="all"))
