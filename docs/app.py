@@ -11,9 +11,11 @@ def index():
 
         output = predict_category(input_text)[0]
         output_title = predict_title(input_text)[0]
+        output_genre = predict_genres(input_text)[0]
 
         confidence_list = output['confidences']
         confidence_list_title = output_title['confidences']
+        confidence_list_genre = output_genre['confidences']
 
         labels = [elem['label'] for elem in confidence_list if elem['confidence'] >= 0.5]
         label_text = ""
@@ -29,7 +31,15 @@ def index():
             if idx != len(labels) - 1:
                 label_text_title = label_text_title + ", "
 
-        return render_template("result.html", input_text=input_text, output_text=label_text, output_title=label_text_title)
+        labels_genre = [elem['label'] for elem in confidence_list_genre]
+        label_text_genre = ""
+        for idx, label in enumerate(labels_genre):
+            label_text_genre = label_text_genre + label
+            if idx != len(labels) - 1:
+                label_text_genre = label_text_genre + ", "
+
+        return render_template("result.html", input_text=input_text, output_text=label_text,
+                               output_title=label_text_title, output_genre=label_text_genre)
     else:
         return render_template("index.html")
 
@@ -46,6 +56,16 @@ def predict_category(input_text):
 
 def predict_title(input_text):
     response = requests.post("https://myte-ev-entertainment-title.hf.space/run/predict", json={
+        "data": [
+            input_text
+        ]
+    }).json()
+    data = response["data"]
+    return data
+
+
+def predict_genres(input_text):
+    response = requests.post("https://myte-ev-entertainment-genre.hf.space/run/predict", json={
         "data": [
             input_text
         ]
