@@ -1,0 +1,6 @@
+ipython
+jupyter
+matplotlib
+pandas
+tqdm
+langdetect

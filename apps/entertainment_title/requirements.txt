@@ -1,0 +1,5 @@
+fastai==2.7.12
+gradio==3.44.2
+ohmeow-blurr==1.0.5
+sentencepiece==0.1.99
+transformers==4.33.1
