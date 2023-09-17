@@ -1,6 +1,5 @@
 from flask import Flask, render_template, request
-import utilities.predict as predict
-import utilities.result as result
+from utilities import predict, result
 
 app = Flask(__name__)
 
