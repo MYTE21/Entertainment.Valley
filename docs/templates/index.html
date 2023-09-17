@@ -1,63 +1,56 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <style>
-        .head {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-size: 30px;
-            height: 5ch;
-        }
-
-        .center {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            font-size: 25px;
-        }
-
-        form {
-            height: 500px;
-            width: 1000px;
-            background-color: rgb(155, 226, 122);
-            padding: 20px;
-            border-radius: 10px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-        }
-
-        #text {
-            height: 100px;
-            width: 500px;
-            font-size: 20px;
-        }
-
-        textarea {
-            height: 500px;
-            width: 500px;
-            font-size: 20px;
-        }
-
-        input {
-            font-size: 20px;
-            padding: 10px;
-        }
-    </style>
-    <div class="head"><b>Game Genre Classifier</b></div>
-  <title></title>
+    <title>Entertainment Valley</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/style.css') }}">
+    <script type="text/javascript" src="{{ url_for('static', filename='scripts/script.js') }}"></script>
 </head>
 
 <body>
-    <div class="center">
-        <form action="/" method="post">
-            <label for="text"><b>Enter Description</b></label> <br />
-            <textarea id="text" name="text"></textarea> <br />
-            <input type="submit" value="Submit">
-        </form>
+    <div class="head"><b>Entertainment Valley</b></div>
+    <div class="evy-container">
+        <div class="input-column">
+            <form action="/" method="post">
+                <label style="font-size: 20px; font-family: cursive, serif;" for="text"><b>Enter Description</b></label> <br />
+                <textarea id="text" name="my_text" placeholder="what's on your mind..."></textarea> <br />
+                <input class="submit" type="submit" value="Submit" onclick="saveUserInput()">
+            </form>
+        </div>
+
+        <div class="output-column">
+            <div class="suggestion"><b>Suggestions Valley</b></div>
+            <div>
+                <div class="sug-valley">
+                    <label for="text"><b>Category:</b></label>
+                        <p> {{ category }} </p>
+                    <br/><br/>
+                </div>
+                <br/><br/>
+
+                <div class="sug-valley">
+                    <label for="text"><b>Titles:</b></label>
+                    <br/>
+                        {% for title in titles %}
+                            <p> {{ title }}
+                            {% if not loop.last %}, {% endif %} </p>
+                        {% endfor %}
+                    <br/><br/>
+                </div>
+                <br/><br/>
+
+                <div class="sug-valley">
+                    <label for="text"><b>Genres:</b></label> <br />
+                        {% for genre in genres %}
+                            {{ genre }}
+                            {% if not loop.last %}, {% endif %}
+                        {% endfor %}
+                    <br/><br/>
+                </div>
+                <br/><br/>
+
+            </div>
+        </div>
     </div>
+
 </body>
 </html>
