@@ -7,6 +7,15 @@
     font-family: cursive, serif;
 }
 
+.suggestion {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 25px;
+    height: 5ch;
+    font-family: cursive, serif;
+}
+
 .container {
     display: flex;
     justify-content: space-between;
@@ -18,8 +27,13 @@
 }
 
 .output-column {
+    height: 500px;
     width: 40%;
-    padding: 10px;
+    padding: 20px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 form {
