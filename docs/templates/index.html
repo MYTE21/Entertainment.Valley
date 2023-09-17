@@ -1,73 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <style>
-        .head {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-size: 30px;
-            height: 5ch;
-        }
-
-        .center {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            font-size: 25px;
-        }
-
-        form {
-            height: 500px;
-            width: 1000px;
-            background-color: rgb(155, 226, 122);
-            padding: 20px;
-            border-radius: 10px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-        }
-
-        #text {
-            height: 100px;
-            width: 500px;
-            font-size: 20px;
-        }
-
-        textarea {
-            height: 500px;
-            width: 500px;
-            font-size: 20px;
-        }
-
-        input {
-            font-size: 20px;
-            padding: 10px;
-        }
-    </style>
     <div class="head"><b>Entertainment Valley</b></div>
   <title></title>
-
-    <script>
-        // Function to save the user's input to localStorage
-        function saveUserInput() {
-            let userInput = document.getElementById("text").value;
-            localStorage.setItem("userInput", userInput);
-        }
-
-        // Function to populate the textarea with the saved input
-        function populateTextarea() {
-            let savedInput = localStorage.getItem("userInput");
-            if (savedInput) {
-                document.getElementById("text").value = savedInput;
-            }
-        }
-
-        // Call populateTextarea() when the page loads
-        window.onload = populateTextarea;
-    </script>
+<link rel="stylesheet" href="{{ url_for('static', filename='styles/style.css') }}">
+    <script type="text/javascript" src="{{ url_for('static', filename='scripts/script.js') }}"></script>
 </head>
 
 <body>
