@@ -21,15 +21,15 @@
             <label for="text"><b>Input Text</b></label> <br />
             {{ input_text }} <br /> <br />
             <label for="text"><b>Category</b></label> <br />
-            {{ output_text }}
+            {{ category }}
             <br /><br />
             <label for="text"><b>Titles</b></label> <br />
-                {% for title in output_title %}
+                {% for title in titles %}
                     <p>{{ title }}</p>
                 {% endfor %}
             <br /><br />
             <label for="text"><b>Genres</b></label> <br />
-            {% for genre in output_genre %}
+            {% for genre in genres %}
                 <p>{{ genre }}</p>
             {% endfor %}
         </div>

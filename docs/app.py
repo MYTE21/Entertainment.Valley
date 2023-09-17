@@ -1,31 +1,26 @@
 from flask import Flask, render_template, request
 import utilities.predict as predict
+import utilities.result as result
 
 app = Flask(__name__)
 
 
-@app.route("/", methods=['GET', 'POST'])
+@app.route("/", methods=["GET", "POST"])
 def index():
     if request.method == "POST":
         input_text = request.form['my_text']
 
-        output = predict.predict_category(input_text)[0]
-        output_title = predict.predict_title(input_text)[0]
-        output_genre = predict.predict_genres(input_text)[0]
+        predicted_categories = predict.predict_category(input_text)[0]
+        category = result.get_category(predicted_categories)
 
-        confidence_list = output['confidences']
-        confidence_list_title = output_title['confidences']
-        confidence_list_genre = output_genre['confidences']
+        predicted_titles = predict.predict_title(input_text)[0]
+        titles = result.get_titles(predicted_titles)
 
-        labels = [elem['label'] for elem in confidence_list if elem['confidence']]
-        label_text = str(labels[0])
+        predicted_genres = predict.predict_genres(input_text)[0]
+        genres = result.get_genres(predicted_genres)
 
-        labels_title = [elem['label'] for elem in confidence_list_title if elem['confidence']]
-
-        labels_genre = [elem['label'] for elem in confidence_list_genre]
-
-        return render_template("index.html", input_text=input_text, output_text=label_text,
-                               output_title=labels_title, output_genre=labels_genre)
+        return render_template("index.html", input_text=input_text, category=category,
+                               titles=titles, genres=genres)
     else:
         return render_template("index.html")
 
