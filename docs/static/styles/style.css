@@ -16,7 +16,16 @@
     font-family: cursive, serif;
 }
 
-.container {
+.sug-valley {
+    display: flex;
+    justify-content: space-between;
+    background-color: rgb(243, 243, 243);;
+    font-family: cursive, serif;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.evy-container {
     display: flex;
     justify-content: space-between;
 }
